@@ -3,192 +3,265 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet"
-            href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
-        >
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/univ.css">
-        <title>Bienvenue sur ma page personnelle</title>
+        <meta name="description" content="Bradley Mondestin — Développeur Web, CEO de KafiTech, Trader Crypto. Portfolio et services en ligne.">
+        <title>Bradley Mondestin — Myself</title>
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+
     </head>
     <body>
-        <header>
-            <a href="#home" class="logo"><h1>BRADLEY <span>MON</span></h1></a>
-            <nav>
-                <ul class="menu-nav">
-                    <li><a href="#">ACCUEIL</a></li>
-                    <li><a href="portfolio.html">PORTFOLIO</a></li>
-                    <li><a href="service.html">SERVICES</a></li>
-                    <li><a href="about.html">À PROPOS</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
-            </nav>
-        </header>
 
-        <section id="home">
-           <div class="homecontent">
-                <div class="text">
-                    <h2>BRADLEY MONDESTIN</h2>
-                    
-                    <div class="text-solo">
-                        <p>Je suis étudiant en informatique, passionné par le développement web, le marketing digital et le trading. 
-                            J’aime créer des projets qui résolvent de vrais problèmes, apprendre de nouvelles technologies 
-                            et partager mes connaissances avec les autres. Cette page présente mes compétences, mes projets 
-                            et mon parcours en tant que développeur.
-                        </p>
-                    </div>
-                    <div class="btn">
-                        <a href="#" class="btn1">
-                            Me Contacter
-                        </a>
-                    </div>
+    <!-- ══ HEADER ══ -->
+    <header>
+        <a href="#home" class="logo">BRADLEY <span>MON</span></a>
+        <nav>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-                    <div class="social">
-                        <a href="https://github.com/..." target="_blank"><i class='bx bxl-github'></i></a>
-                        <a href="https://instagram.com/..." target="_blank"><i class='bx bxl-instagram'></i></a>
-                        <a href="https://twitter.com/..." target="_blank"><i class='bx bxl-twitter'></i></a>
-                    </div>
-                </div>
-           </div>
-        </section>
-
-        <section id="home2" class="home2">
-            <p class="slogan">
-                L’innovation commence ici.
+    <!-- ══ HOME ══ -->
+    <section id="home">
+        <div class="home-bg"></div>
+        <div class="home-content">
+            <span class="home-tag">CEO de KafiTech · Développeur · Trader</span>
+            <h1 class="home-name">BRADLEY<br><span>MON</span></h1>
+            <p class="home-desc">
+                Étudiant en informatique, passionné par le développement web, le marketing digital et le trading.
+                Je crée des projets qui résolvent de vrais problèmes et partage mes connaissances avec les autres.
             </p>
-        </section>
-<!--
-        <section id="home3">
-            <h2>Mes Services</h2>
-        
-            <div class="service-item">
-                <i class='bx bxl-html5'></i>
+            <div class="home-btns">
+                <a href="#contact" class="btn-primary">Me Contacter</a>
+                <a href="#portfolio" class="btn-outline">Voir mes projets</a>
+            </div>
+            <div class="social-row">
+                <a href="https://github.com/" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="https://instagram.com/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class='bx bxl-twitter'></i></a>
+                <a href="https://linkedin.com/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slogan bar -->
+    <div class="slogan-bar">
+        <p>L'innovation commence ici.</p>
+    </div>
+
+    <!-- ══ SERVICES ══ -->
+    <section id="services">
+        <p class="section-label">Ce que je fais</p>
+        <h2 class="section-title">Mes Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class='bx bxl-html5 service-icon'></i>
                 <h3>Développement Web</h3>
                 <p>Création de sites web professionnels et responsives avec HTML, CSS et JavaScript.</p>
             </div>
-
-            <div class="service-item">
-                <i class='bx bxl-python'></i>
+            <div class="service-card">
+                <i class='bx bxl-python service-icon'></i>
                 <h3>Développement Logiciel</h3>
                 <p>Développement de logiciels sur mesure en Python, Java et C, adaptés aux besoins de votre entreprise.</p>
             </div>
-
-            <div class="service-item">
-                <i class='bx bxl-network-chart'></i>
+            <div class="service-card">
+                <i class='bx bx-network-chart service-icon'></i>
                 <h3>Réseaux & IT</h3>
                 <p>Conception, installation et gestion de réseaux locaux et virtuels pour entreprises et institutions.</p>
             </div>
-
-            <div class="service-item">
-                <i class='bx bxl-bitcoin'></i>
+            <div class="service-card">
+                <i class='bx bxl-bitcoin service-icon'></i>
                 <h3>Trading & Crypto</h3>
-                <p>Accompagnement et conseils sur le trading de cryptomonnaies, analyse des marchés et gestion des risques.
-                    Achat et vente de cryptomonnaies via BINANCE.
-                </p>
+                <p>Accompagnement sur le trading de cryptomonnaies, analyse des marchés et gestion des risques via BINANCE.</p>
             </div>
-
-            <div class="service-item">
-                <i class='bx bxl-digital-ocean'></i>
+            <div class="service-card">
+                <i class='bx bxs-megaphone service-icon'></i>
                 <h3>Marketing Digital</h3>
                 <p>Stratégies de marketing digital, gestion de réseaux sociaux et promotion de vos projets en ligne.</p>
             </div>
-
-            <div class="service-item">
-                <i class='bx bxs-dumbbell'></i>
-                <h3>Accompagnement en Renforcement Musculaire</h3>
+            <div class="service-card">
+                <i class='bx bxs-dumbbell service-icon'></i>
+                <h3>Renforcement Musculaire</h3>
                 <p>Création de programmes personnalisés et suivi des clients pour améliorer force, endurance et forme physique.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="home4">
-            <img src="images/im3.jpg " alt="" width="317" height="400">
-            <p><strong>CEO de KafiTech</strong> | 2025 - Présent</p>
-            <p>Fondateur de KafiTech, développant des projets technologiques et vendant des cryptomonnaies, 
-                tout en gérant les opérations de l'entreprise.
-            </p>
+    <!-- ══ PORTFOLIO ══ -->
+    <section id="portfolio">
+        <p class="section-label">Mes travaux</p>
+        <h2 class="section-title">Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><img src="images/IMG1.png" alt="Projet 1"></div>
+            <div class="portfolio-item"><img src="images/IMG2.png" alt="Projet 2"></div>
+            <div class="portfolio-item"><img src="images/IMG3.png" alt="Projet 3"></div>
+            <div class="portfolio-item"><img src="images/IMG4.png" alt="Projet 4"></div>
+            <div class="portfolio-item"><img src="images/IMG5.png" alt="Projet 5"></div>
+            <div class="portfolio-item"><img src="images/IMG6.png" alt="Projet 6"></div>
+        </div>
+        <div class="voir-plus"><a href="#">Voir plus</a></div>
+    </section>
 
-            <!-- Formation --
-            <div class="cv-section">
-                <h3>Formation</h3>
-                <p><strong>CAMPUS HENRY CHRISTOPHE DE LIMONADE - CHCL</strong> | 2022 - Présent</p>
-                <p>Étudiant en informatique - Licence 3</p>
-
-                <p><strong>Etudes classiques</strong> | 2006 - 2019</p>
-                <p>Baccalauréat</p>
-
-                <h3>Certifications</h3>
-                <p><strong>Certificat en Trading de Cryptomonnaies</strong> | 2025</p>
-                <p>Formation complète sur le trading crypto. <a href="docs/certificate1.pdf" target="_blank">Voir le certificat</a></p>
-
-                <p><strong>Certificat en Renforcement Musculaire</strong> | 2025</p>
-                <p>Formation pratique sur les techniques de musculation, l'accompagnement des clients et la création de 
-                    programmes personnalisés. 
+    <!-- ══ ABOUT ══ -->
+    <section id="about">
+        <p class="section-label">Mon parcours</p>
+        <h2 class="section-title">À Propos</h2>
+        <div class="about-grid">
+            <!-- Colonne gauche -->
+            <div class="about-img-wrap">
+                <img src="images/im1.PNG" alt="Bradley Mondestin">
+                <p class="about-role">Claudyson MONDESTIN - CEO de KafiTech
+                    <span>2025 — Présent</span>
                 </p>
             </div>
+            <!-- Colonne droite -->
+            <div>
+                <!-- Formation -->
+                <div class="cv-block">
+                    <h3>Formation</h3>
+                    <div class="cv-item">
+                        <strong>Campus Henry Christophe de Limonade — CHCL</strong>
+                        <span class="cv-date">2022 — 2025</span>
+                        <p>Étudiant en informatique — Licence 3 (en cours de reprise) </p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Études classiques</strong>
+                        <span class="cv-date">2006 — 2019</span>
+                        <p>Baccalauréat</p>
+                    </div>
+                </div>
 
-            <!-- Projets / Expériences --
-            <div class="cv-section">
-                <h3>Projets & Expériences</h3>
-                <p><strong>Projet en équipe : Site web d'agence immobilière</strong> | 2025</p>
-                <p>Participation à un projet d'équipe pour développer un site web pour une agence immobilière 
-                    en utilisant HTML, CSS et JavaScript, contribuant à la conception du layout, aux fonctionnalités 
-                    interactives et au design responsive.
-                </p>
+                <!-- Certifications -->
+                <div class="cv-block">
+                    <h3>Certifications</h3>
+                    <div class="cv-item">
+                        <strong>Certificat en Trading de Cryptomonnaies</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Formation complète sur le trading crypto. <a href="docs/certificate1.pdf" target="_blank" style="color:var(--gold);">Voir le certificat</a></p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Certificat en Renforcement Musculaire</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Formation pratique sur les techniques de musculation, l'accompagnement des clients et la création de programmes personnalisés.</p>
+                    </div>
+                </div>
 
-                <p><strong>Projet Python : Logiciel de gestion des transactions</strong> | 2025</p>
-                <p>Participation au développement d'un logiciel utilisant Python pour enregistrer et gérer les transactions 
-                    d'une entreprise, en mettant en place des fonctionnalités de stockage de données, suivi des transactions 
-                    et génération de rapports.
-                </p>
+                <!-- Expériences -->
+                <div class="cv-block">
+                    <h3>Projets & Expériences</h3>
+                    <div class="cv-item">
+                        <strong>Site web d'agence immobilière (Équipe)</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Développement en équipe avec HTML, CSS et JavaScript — layout, fonctionnalités interactives et design responsive.</p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Logiciel de gestion des transactions (Python)</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Stockage de données, suivi des transactions et génération de rapports.</p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Site e-commerce (Solo)</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Site entièrement fonctionnel, open-source, avec liste de produits, panier et design responsive.</p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Logiciel de gestion des ventes (C)</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Gestion des stocks, suivi des transactions et génération de rapports pour ventes en gros et détail.</p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Logiciel de gestion éducative (Java)</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Gestion des étudiants, des cours et des rapports pour institutions éducatives.</p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Réseaux — Installation locale & virtuelle, CHCL</strong>
+                        <span class="cv-date">2025</span>
+                        <p>Installation réseau local Wi-Fi et projets virtuels de communication — configuration, simulation et gestion.</p>
+                    </div>
+                    <div class="cv-item">
+                        <strong>Trading Crypto</strong>
+                        <span class="cv-date">2022 — Présent</span>
+                        <p>Analyse des marchés, analyse technique et stratégies de gestion des risques.</p>
+                    </div>
+                </div>
 
-                <p><strong>Projet solo : Site e-commerce</strong> | 2025</p>
-                <p>Développement d'un site e-commerce entièrement fonctionnel de manière indépendante, avec un code 
-                    open-source que tout le monde peut utiliser et adapter à ses besoins. Implémentation des fonctionnalités 
-                    telles que la liste de produits, le panier et un design responsive en HTML, CSS et JavaScript.
-                </p>
-
-                <p><strong>Projet en équipe : Logiciel de gestion des ventes</strong> | 2025</p>
-                <p>Participation au développement d'un logiciel en C pour une entreprise gérant des ventes en gros et au détail. 
-                    Contribution aux fonctionnalités de gestion des stocks, suivi des transactions et génération de rapports, 
-                    acquisition d'expérience pratique en programmation structurée et travail en équipe.
-                </p>
-
-                <p><strong>Projet en équipe : Logiciel de gestion éducative</strong> | 2025</p>
-                <p>Participation au développement d'un logiciel en Java pour gérer des institutions éducatives. 
-                    Contribution aux fonctionnalités de gestion des étudiants, des cours et des rapports, acquérant une 
-                    expérience pratique en programmation Java et travail en équipe.
-                </p>
-
-            <p><strong>Réseaux : Installation locale et virtuelle - CHCL</strong> | 2025</p>
-                <p>Participation à l'installation d'un réseau local pour fournir un accès internet via Wi-Fi, ainsi qu'à
-                    des projets d'installation virtuelle de réseaux de communication pour le Campus Henry Christophe de 
-                    Limonade, acquérant une expérience pratique en configuration, conception, simulation et gestion de réseaux.
-                </p>
-
-                <p><strong>Trading</strong> | 2022 - Présent</p>
-                <p>Acquisition d'expérience pratique en trading et analyse des marchés des cryptomonnaies, apprentissage 
-                    des tendances du marché, de l'analyse technique et des stratégies de gestion des risques.
-                </p>
+                <!-- Compétences -->
+                <div class="cv-block">
+                    <h3>Compétences</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">HTML / CSS / JS</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">E-commerce</span>
+                        <span class="skill-tag">Réseaux</span>
+                        <span class="skill-tag">Marketing Digital</span>
+                        <span class="skill-tag">Trading Crypto</span>
+                        <span class="skill-tag">Gestion de projet</span>
+                        <span class="skill-tag">Travail en équipe</span>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Compétences --
-            <div class="cv-section">
-                <h3>Compétences</h3>
-                <ul>
-                    <li>Développement Web (HTML / CSS / JavaScript)</li>
-                    <li>Développement logiciel (Python, C, Java)</li>
-                    <li>Développement E-commerce</li>
-                    <li>Réseaux</li>
-                    <li>Marketing digital</li>
-                    <li>Gestion de projet & Travail en équipe</li>
-                    <li>Résolution de problèmes & Autonomie</li>
-                    <li>Trading de cryptomonnaies</li>
-                </ul>
+    <!-- ══ CONTACT ══ -->
+    <section id="contact">
+        <p class="section-label">Travaillons ensemble</p>
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+            <!-- Info -->
+            <div class="contact-info-block">
+                <p>Vous avez un projet, une question ou une opportunité ? N'hésitez pas à me contacter — je réponds rapidement.</p>
+                <div class="contact-detail">
+                    <i class='bx bx-envelope'></i>
+                    <span><a href="mailto:bradley@example.com">bradley@example.com</a></span>
+                </div>
+                <div class="contact-detail">
+                    <i class='bx bx-phone'></i>
+                    <span>+509 1234 5678</span>
+                </div>
+                <div class="contact-detail">
+                    <i class='bx bx-buildings'></i>
+                    <span>KafiTech</span>
+                </div>
+                <div class="contact-social">
+                    <a href="https://github.com/" target="_blank"><i class='bx bxl-github'></i></a>
+                    <a href="https://linkedin.com/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://instagram.com/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://twitter.com/" target="_blank"><i class='bx bxl-twitter'></i></a>
+                </div>
             </div>
+            <!-- Formulaire -->
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name" placeholder="Votre nom complet" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
+                </div>
+                <button type="button" class="form-submit">Envoyer le message</button>
+            </div>
+        </div>
+    </section>
 
-        </section>
--->
-        <footer>
-            <p>© 2025 Bradley Mondestin</p>
-        </footer>
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <p>© 2025 <span>Bradley Mondestin</span> — Tous droits réservés.</p>
+    </footer>
+
     </body>
 </html>
