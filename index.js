@@ -41,3 +41,15 @@
     rd.classList.add('active');
 })();
 
+const langDropdown = document.querySelector(".lang-dropdown");
+
+console.log(langDropdown); // test
+
+langDropdown.addEventListener("click", (e) => {
+    e.stopPropagation();
+    langDropdown.classList.toggle("active");
+});
+
+document.addEventListener("click", () => {
+    langDropdown.classList.remove("active");
+});

@@ -53,6 +53,66 @@ nav ul li a {
 }
 nav ul li a:hover { color: var(--gold); }
 
+/* ── Language Dropdown ── */
+.lang-dropdown {
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+}
+
+.lang-dropdown i {
+    transition: transform 0.2s, color 0.2s;
+}
+
+.lang-dropdown.active i {
+    transform: scale(1.1);
+    color: var(--gold2);
+}
+
+.lang-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    min-width: 140px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+    display: none;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+}
+
+.lang-menu li {
+    margin: 6px 0;
+}
+
+.lang-menu a {
+    font-size: 13px;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.lang-menu a:hover {
+    color: var(--gold);
+}
+
+/* CLICK ONLY */
+.lang-dropdown.active .lang-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* ── Sections base ── */
 section { padding: 100px 48px 80px; max-width: 1100px; margin: 0 auto; width: 100%; }
 .section-label {
