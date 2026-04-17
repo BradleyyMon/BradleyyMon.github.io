@@ -66,3 +66,18 @@ langDropdown.addEventListener("click", (e) => {
 document.addEventListener("click", () => {
     langDropdown.classList.remove("active");
 });
+
+// Google Analytics 4 - Gtag
+(function () {
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtag/js?id=G-KFL6WLK9YQ";
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+
+  gtag('js', new Date());
+  gtag('config', 'G-KFL6WLK9YQ');
+})();
