@@ -81,3 +81,23 @@ document.addEventListener("click", () => {
   gtag('js', new Date());
   gtag('config', 'G-KFL6WLK9YQ');
 })();
+
+(function () {
+  const lang = (navigator.language || "").toLowerCase();
+  const path = window.location.pathname;
+
+  // FR default
+  const isES = lang.startsWith("es");
+  const isEN = lang.startsWith("en");
+
+  // evite reload sou menm paj la
+  if (isES && !path.includes("index-es.html")) {
+    window.location.href = "index-es.html";
+  } 
+  else if (isEN && !path.includes("index-en.html")) {
+    window.location.href = "index-en.html";
+  } 
+  else if (!isES && !isEN && !path.includes("index.html")) {
+    window.location.href = "index.html";
+  }
+})();
