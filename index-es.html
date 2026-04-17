@@ -1,85 +1,200 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Bradley Mondestin — Développeur Web, CEO de KafiTech, Trader Crypto. Portfolio et services en ligne.">
-        <title>Bradley Mondestin — Yo mismo</title>
-        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <meta name="description" content="Bradley Mondestin — Desarrollador Web, CEO de KafiTech, Trader Crypto. Portafolio y servicios en línea.">
+        <title>Bradley Mondestin — Portafolio</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
         <link rel="stylesheet" href="index.css">
         <script src="index.js" defer></script>
     </head>
 
-<body>
+    <body>
 
-<header>
-    <a href="#home" class="logo">BRADLEY <span>MON</span></a>
-    <nav>
-        <ul>
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#services">Servicios</a></li>
-            <li><a href="#portfolio">Portafolio</a></li>
-            <li><a href="#about">Sobre mí</a></li>
-            <li><a href="#contact">Contacto</a></li>
-        </ul>
-    </nav>
-</header>
+        <header>
+            <a href="#home" class="logo">BRADLEY <span>MON</span></a>
 
-<section id="home">
-    <span class="home-tag">CEO de KafiTech · Desarrollador · Trader</span>
-    <p class="home-desc"></p>
-    <div class="home-btns">
-        <a href="#contact">Contactarme</a>
-        <a href="#portfolio">Ver mis proyectos</a>
-    </div>
-</section>
+            <nav>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#portfolio">Portafolio</a></li>
+                    <li><a href="#about">Sobre mí</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
 
-<div class="slogan-bar">
-    <p>La innovación comienza aquí.</p>
-</div>
+            <div class="lang-dropdown">
+                <i class='bx bx-globe'></i>
+                <ul class="lang-menu">
+                    <li><a href="index.html">Français</a></li>
+                    <li><a href="index-an.html">Anglais</a></li>
+                </ul>
+            </div>
+        </header>
 
-<section id="services">
-    <p>Lo que hago</p>
-    <h2>Mis Servicios</h2>
+        <section id="home">
+            <div class="home-bg"></div>
+            <div class="home-content">
+                <span class="home-tag">CEO de KafiTech · Desarrollador · Trader</span>
 
-    <h3>Desarrollo Web</h3>
-    <p>Creación de sitios web profesionales y responsivos con HTML, CSS y JavaScript.</p>
+                <h1 class="home-name">
+                    <span class="typed-white"></span><span class="cursor">|</span><br>
+                    <span class="typed-gold"></span>
+                </h1>
 
-    <h3>Desarrollo de Software</h3>
-    <p>Desarrollo de software a medida en Python, Java y C, adaptado a las necesidades de tu empresa.</p>
+                <p class="home-desc">
+                    <span class="reading-text"></span>
+                </p>
 
-    <h3>Redes & IT</h3>
-    <p>Diseño, instalación y gestión de redes locales y virtuales para empresas e instituciones.</p>
+                <div class="home-btns">
+                    <a href="#contact" class="btn-primary">Contactarme</a>
+                    <a href="#portfolio" class="btn-outline">Ver mis proyectos</a>
+                </div>
 
-    <h3>Trading & Crypto</h3>
-    <p>Asesoramiento en trading de criptomonedas, análisis de mercados y gestión de riesgos mediante BINANCE.</p>
+                <div class="social-row">
+                    <a href="#"><i class='bx bxl-github'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+        </section>
 
-    <h3>Marketing Digital</h3>
-    <p>Estrategias de marketing digital, gestión de redes sociales y promoción de tus proyectos en línea.</p>
+        <div class="slogan-bar">
+            <p>La innovación comienza aquí.</p>
+        </div>
 
-    <h3>Entrenamiento Físico</h3>
-    <p>Creación de programas personalizados y seguimiento de clientes para mejorar la fuerza, resistencia y condición física.</p>
-</section>
+        <section id="services">
+            <p class="section-label">Lo que hago</p>
+            <h2 class="section-title">Mis Servicios</h2>
 
-<section id="portfolio">
-    <p>Mis trabajos</p>
-    <h2>Portafolio</h2>
-    <a href="#">Ver más</a>
-</section>
+            <div class="services-grid">
 
-<section id="about">
-    <p>Mi trayectoria</p>
-    <h2>Sobre mí</h2>
+                <div class="service-card">
+                    <h3>Desarrollo Web</h3>
+                    <p>Creación de sitios web profesionales y responsivos con HTML, CSS y JavaScript.</p>
+                </div>
 
-    <h3>Formación</h3>
-    <p>Estudios en informática hasta Licenciatura 3 (en proceso de reanudación)</p>
+                <div class="service-card">
+                    <h3>Desarrollo de Software</h3>
+                    <p>Desarrollo de software a medida en Python, Java y C, adaptado a las necesidades de tu empresa.</p>
+                </div>
 
-    <h3>Certificaciones</h3>
-    <p>Certificado en Trading de Criptomonedas</p>
-    <p>Certificado en Entrenamiento Físico</p>
+                <div class="service-card">
+                    <h3>Redes & IT</h3>
+                    <p>Diseño, instalación y gestión de redes locales y virtuales para empresas e instituciones.</p>
+                </div>
 
-    <h3>Proyectos & Experiencia</h3>
-    <p>Sitio web de agencia inmobiliaria (equipo)</p>
-    <p>Software de gestión de transacciones (Python)</p>
+                <div class="service-card">
+                    <h3>Trading & Crypto</h3>
+                    <p>Asesoramiento en trading de criptomonedas, análisis de mercados y gestión de riesgos mediante BINANCE.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Marketing Digital</h3>
+                    <p>Estrategias de marketing digital, gestión de redes sociales y promoción de tus proyectos en línea.</p>
+                </div>
+
+                <div class="service-card">
+                    <h3>Entrenamiento Físico</h3>
+                    <p>Creación de programas personalizados y seguimiento de clientes para mejorar la fuerza, resistencia y condición física.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <p class="section-label">Mis trabajos</p>
+            <h2 class="section-title">Portafolio</h2>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item"><img src="images/IMG1.png"></div>
+                <div class="portfolio-item"><img src="images/IMG2.png"></div>
+                <div class="portfolio-item"><img src="images/IMG3.png"></div>
+                <div class="portfolio-item"><img src="images/IMG6.png"></div>
+                <div class="portfolio-item"><img src="images/IMG5.png"></div>
+                <div class="portfolio-item"><img src="images/IMG4.png"></div>
+            </div>
+
+            <div class="voir-plus"><a href="#">Ver más</a></div>
+        </section>
+
+        <section id="about">
+            <p class="section-label">Mi trayectoria</p>
+            <h2 class="section-title">Sobre mí</h2>
+
+            <div class="about-grid">
+
+                <div class="about-img-wrap">
+                    <img src="images/im1.PNG">
+                    <p class="about-role">Claudyson MONDESTIN - CEO de KafiTech
+                        <span>2025 — Presente</span>
+                    </p>
+                </div>
+
+                <div>
+
+                    <div class="cv-block">
+                        <h3>Formación</h3>
+                        <p>Estudios en informática hasta Licenciatura 3 (en proceso de reanudación)</p>
+                        <p>Bachillerato</p>
+                    </div>
+
+                    <div class="cv-block">
+                        <h3>Certificaciones</h3>
+                        <p>Formación completa en trading de criptomonedas</p>
+                        <p>Formación en entrenamiento físico</p>
+                    </div>
+
+                    <div class="cv-block">
+                        <h3>Proyectos & Experiencia</h3>
+                        <p>Desarrollo web en equipo</p>
+                        <p>Software en Python</p>
+                        <p>Proyecto e-commerce</p>
+                        <p>Software en C</p>
+                        <p>Software en Java</p>
+                        <p>Instalación de redes</p>
+                        <p>Trading de criptomonedas</p>
+                    </div>
+
+                    <div class="cv-block">
+                        <h3>Habilidades</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">HTML / CSS / JS</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">Redes</span>
+                            <span class="skill-tag">Marketing</span>
+                            <span class="skill-tag">Trading</span>
+                            <span class="skill-tag">Trabajo en equipo</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <p class="section-label">Trabajemos juntos</p>
+            <h2 class="section-title">Contacto</h2>
+
+            <p>¿Tienes un proyecto? Contáctame y te responderé rápidamente.</p>
+
+            <input type="text" placeholder="Nombre">
+            <input type="email" placeholder="Correo electrónico">
+            <textarea placeholder="Mensaje"></textarea>
+
+            <button class="form-submit">Enviar mensaje</button>
+        </section>
+
+        <footer>
+            <p>© 2025 Bradley Mondestin — Todos los derechos reservados.</p>
+        </footer>
+
+    </body>
+</html>
