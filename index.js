@@ -4,7 +4,20 @@
     const cur = document.querySelector('.cursor');
     const rd = document.querySelector('.reading-text');
 
-    const fullDesc = "Étudiant en informatique, passionné par le développement web, le marketing digital et le trading. Je crée des projets qui résolvent de vrais problèmes et partage mes connaissances avec les autres.";
+    // 🔥 DETECT LANG
+    const lang = document.documentElement.lang;
+
+    let fullDesc = "";
+
+    if (lang === "fr") {
+        fullDesc = "Étudiant en informatique, passionné par le développement web, le marketing digital et le trading. Je crée des projets qui résolvent de vrais problèmes et partage mes connaissances avec les autres.";
+    } 
+    else if (lang === "es") {
+        fullDesc = "Estudiante de informática, apasionado por el desarrollo web, el marketing digital y el trading. Creo proyectos que resuelven problemas reales y comparto mis conocimientos con los demás.";
+    } 
+    else if (lang === "en") {
+        fullDesc = "Computer science student, passionate about web development, digital marketing and trading. I create projects that solve real problems and share my knowledge with others.";
+    }
 
     let i = 0;
 
@@ -41,9 +54,9 @@
     rd.classList.add('active');
 })();
 
-const langDropdown = document.querySelector(".lang-dropdown");
 
-console.log(langDropdown); // test
+// 🔥 DROPDOWN LANG
+const langDropdown = document.querySelector(".lang-dropdown");
 
 langDropdown.addEventListener("click", (e) => {
     e.stopPropagation();
