@@ -83,21 +83,28 @@ document.addEventListener("click", () => {
 })();
 
 (function () {
-  const lang = (navigator.language || "").toLowerCase();
+  const savedLang = localStorage.getItem("lang");
+  const browserLang = (navigator.language || "").toLowerCase();
   const path = window.location.pathname;
 
-  // FR default
-  const isES = lang.startsWith("es");
-  const isEN = lang.startsWith("en");
+  let targetLang = savedLang;
 
-  // evite reload sou menm paj la
-  if (isES && !path.includes("index-es.html")) {
+  // si user pa janm chwazi
+  if (!targetLang) {
+    if (browserLang.startsWith("es")) targetLang = "es";
+    else if (browserLang.startsWith("en")) targetLang = "en";
+    else targetLang = "fr";
+  }
+
+  // redirect selon lang
+  if (targetLang === "es" && !path.includes("index-es.html")) {
     window.location.href = "index-es.html";
   } 
-  else if (isEN && !path.includes("index-en.html")) {
+  else if (targetLang === "en" && !path.includes("index-en.html")) {
     window.location.href = "index-en.html";
   } 
-  else if (!isES && !isEN && !path.includes("index.html")) {
+  else if (targetLang === "fr" && !path.includes("index.html")) {
     window.location.href = "index.html";
   }
 })();
+
