@@ -352,6 +352,20 @@ const CONFIG = {
   whatsappNumber: "52962108"           // ⚠️ verifica que este número esté COMPLETO (con código de país, sin + ni espacios)
 };
 
+// Si algo falla, mostramos un aviso visible en la página en vez de fallar en silencio
+window.addEventListener('error', function(e){
+  let box = document.getElementById('debug-error-box');
+  if(!box){
+    box = document.createElement('div');
+    box.id = 'debug-error-box';
+    box.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#ffdada;color:#7a0000;padding:10px 14px;font:12px monospace;z-index:9999;max-height:35vh;overflow:auto;';
+    document.body.appendChild(box);
+  }
+  const line = document.createElement('div');
+  line.textContent = '⚠️ ' + e.message + ' (línea ' + e.lineno + ')';
+  box.appendChild(line);
+});
+
 document.getElementById('my-photo').src = CONFIG.myPhoto;
 document.getElementById('her-photo').src = CONFIG.herPhoto;
 document.getElementById('my-name-label').textContent = CONFIG.myName;
@@ -454,8 +468,18 @@ const btnSend = document.getElementById('btn-send');
 const countdownEl = document.getElementById('countdown');
 const toastEl = document.getElementById('toast');
 
+let waWindow = null; // referencia abierta en el mismo gesto del clic, para evitar el bloqueo de pop-ups
+
 btnSend.addEventListener('click', ()=>{
   btnSend.disabled = true;
+
+  // Abrimos la pestaña YA (vacía) mientras el navegador todavía considera
+  // esto "una acción directa del usuario". Más tarde solo cambiamos su URL.
+  waWindow = window.open('', '_blank');
+  if(waWindow){
+    waWindow.document.write('<p style="font-family:sans-serif;padding:20px;">Preparando tu mensaje de WhatsApp… ⏳</p>');
+  }
+
   let secs = 5;
   countdownEl.textContent = `Tomando la captura en ${secs}... 📸`;
   const timer = setInterval(()=>{
@@ -498,7 +522,12 @@ Te adjunto la captura que se descargó automáticamente ✨`;
 
     setTimeout(()=>{
       const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
+      if(waWindow && !waWindow.closed){
+        waWindow.location.href = url; // reusamos la pestaña ya abierta
+      } else {
+        // El navegador bloqueó la apertura automática: mostramos un enlace manual
+        toastEl.innerHTML = 'Tu navegador bloqueó la ventana automática. <a href="'+url+'" target="_blank" style="color:var(--rose-deep);font-weight:700;">Toca aquí para abrir WhatsApp</a>';
+      }
     }, 1200);
   }).catch(()=>{
     toastEl.textContent = 'No se pudo generar la captura automáticamente. Puedes tomar un pantallazo manual 📱';
