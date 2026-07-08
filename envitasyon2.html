@@ -1,1 +1,898 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Jessica, ¡Estás Invitada! 🕸️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
 
+  :root{
+    --navy:#0b1020;
+    --navy-2:#131a33;
+    --web-white:#eef1ff;
+    --spider-red:#e0202c;
+    --spider-red-dark:#a5121b;
+    --spider-blue:#1f3fb6;
+    --spider-blue-light:#3d63e0;
+    --gold:#ffc94d;
+    --shadow: 0 20px 50px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(1200px 800px at 50% -10%, var(--navy-2), var(--navy) 60%);
+    color:var(--web-white);
+    font-family:'Poppins', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* ---------- Web background ---------- */
+  #webCanvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    opacity:.35;
+    pointer-events:none;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+    padding:32px 20px 80px;
+  }
+
+  /* ---------- Swinging spider ---------- */
+  .spider-rig{
+    position:absolute;
+    top:0;
+    right:8%;
+    width:2px;
+    height:0;
+    background:linear-gradient(var(--web-white), transparent);
+    z-index:2;
+    animation: dropIn 1.6s ease-out forwards;
+    transform-origin:top center;
+  }
+  @keyframes dropIn{
+    0%{height:0;}
+    60%{height:150px;}
+    100%{height:130px;}
+  }
+  .spider{
+    position:absolute;
+    top:130px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:34px;
+    animation: swing 3.2s ease-in-out infinite 1.8s;
+    transform-origin:top center;
+  }
+  @keyframes swing{
+    0%,100%{transform:translateX(-50%) rotate(-14deg);}
+    50%{transform:translateX(-50%) rotate(14deg);}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    text-align:center;
+    padding-top:70px;
+  }
+  .badge{
+    display:inline-block;
+    background:var(--spider-red);
+    color:var(--web-white);
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-size:12px;
+    padding:6px 14px;
+    border-radius:999px;
+    border:2px solid var(--gold);
+    margin-bottom:18px;
+  }
+  h1.title{
+    font-family:'Bangers', cursive;
+    font-weight:400;
+    font-size:clamp(46px, 12vw, 88px);
+    line-height:.95;
+    letter-spacing:.02em;
+    margin:0 0 6px;
+    color:var(--spider-red);
+    -webkit-text-stroke:2px var(--web-white);
+    text-shadow: 4px 4px 0 var(--spider-blue), 8px 8px 18px rgba(0,0,0,.5);
+  }
+  .subtitle{
+    font-family:'Bangers', cursive;
+    font-weight:400;
+    font-size:clamp(22px, 6vw, 34px);
+    color:var(--gold);
+    margin:0 0 26px;
+    letter-spacing:.03em;
+  }
+  .kid-name{
+    font-size:clamp(20px,5vw,26px);
+    font-weight:800;
+    color:var(--web-white);
+    background:linear-gradient(90deg, var(--spider-blue-light), var(--spider-red));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:34px;
+  }
+
+  /* ---------- Card ---------- */
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    padding:26px 22px;
+    box-shadow:var(--shadow);
+    backdrop-filter: blur(6px);
+    margin-bottom:26px;
+  }
+  .details{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:6px;
+  }
+  .detail{
+    background:rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:14px;
+    padding:14px 12px;
+    text-align:center;
+  }
+  .detail .label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .detail .value{
+    font-size:16px;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .detail .value small{
+    display:block;
+    font-weight:500;
+    font-size:12px;
+    opacity:.75;
+    margin-top:2px;
+  }
+  .detail.full{grid-column:1 / -1;}
+
+  .message{
+    text-align:center;
+    font-size:15px;
+    line-height:1.6;
+    color:rgba(238,241,255,.9);
+    margin:18px 4px 4px;
+  }
+
+  /* ---------- RSVP ---------- */
+  .rsvp-title{
+    font-family:'Bangers', cursive;
+    text-align:center;
+    font-size:clamp(24px,6vw,30px);
+    color:var(--web-white);
+    letter-spacing:.03em;
+    margin: 30px 0 18px;
+  }
+  .rsvp-zone{
+    position:relative;
+    min-height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    border:none;
+    cursor:pointer;
+    font-family:'Poppins', sans-serif;
+    font-weight:800;
+    font-size:17px;
+    padding:16px 30px;
+    border-radius:999px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    transition: transform .15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active{transform:scale(.96);}
+  .btn-yes{
+    background: linear-gradient(135deg, var(--spider-red), var(--spider-red-dark));
+    color:var(--web-white);
+    border:2px solid var(--gold);
+  }
+  .btn-yes:disabled{opacity:.75; cursor:default;}
+  .btn-no{
+    background: linear-gradient(135deg, var(--spider-blue-light), var(--spider-blue));
+    color:var(--web-white);
+    position:relative;
+    z-index:3;
+  }
+  #noBtn.dodging{
+    position:fixed;
+    transition: top .18s ease, left .18s ease;
+  }
+
+  .confirm-msg{
+    display:none;
+    text-align:center;
+    font-family:'Bangers', cursive;
+    font-size:22px;
+    color:var(--gold);
+    margin-top:16px;
+    letter-spacing:.02em;
+  }
+  .confirm-msg.show{display:block; animation: pop .4s ease;}
+  @keyframes pop{
+    0%{transform:scale(.7); opacity:0;}
+    100%{transform:scale(1); opacity:1;}
+  }
+
+  footer{
+    text-align:center;
+    font-size:12px;
+    color:rgba(238,241,255,.5);
+    margin-top:40px;
+  }
+
+  /* burst decoration */
+  .burst{
+    position:absolute;
+    font-family:'Bangers', cursive;
+    color:var(--gold);
+    opacity:.85;
+    pointer-events:none;
+    z-index:2;
+    user-select:none;
+  }
+  .b1{top:18px; left:6%; font-size:20px; transform:rotate(-12deg);}
+  .b2{top:60px; right:4%; font-size:16px; transform:rotate(10deg);}
+
+  /* ---------- Cinema scene (revealed after "Sí") ---------- */
+  .cinema-scene{
+    display:none;
+    margin-top:8px;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:var(--shadow);
+    background:#05060d;
+  }
+  .cinema-scene.show{display:block; animation: fadeUp .6s ease;}
+  @keyframes fadeUp{
+    0%{opacity:0; transform:translateY(14px);}
+    100%{opacity:1; transform:translateY(0);}
+  }
+  .cinema-scene svg{display:block; width:100%; height:auto;}
+  .cinema-caption{
+    text-align:center;
+    font-size:13px;
+    color:rgba(238,241,255,.7);
+    padding:10px 14px 16px;
+  }
+
+  /* ---------- Movie flyer (original artwork, not official poster) ---------- */
+  .flyer{
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:var(--shadow);
+    margin-bottom:26px;
+    background:
+      radial-gradient(600px 300px at 50% -20%, rgba(224,32,44,.35), transparent 60%),
+      linear-gradient(180deg,#0d1330,#05060d 75%);
+  }
+  .flyer-inner{
+    padding:26px 20px 22px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .flyer-eyebrow{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .flyer-title{
+    font-family:'Bangers', cursive;
+    font-size:clamp(28px,7vw,42px);
+    line-height:1.02;
+    color:var(--web-white);
+    text-shadow: 3px 3px 0 var(--spider-red), 6px 6px 14px rgba(0,0,0,.5);
+    margin:0 0 4px;
+  }
+  .flyer-sub{
+    font-family:'Bangers', cursive;
+    font-size:clamp(15px,4vw,19px);
+    color:var(--spider-blue-light);
+    letter-spacing:.03em;
+    margin-bottom:16px;
+  }
+  .flyer-webline{
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+    margin:14px auto 16px;
+    width:70%;
+  }
+  .flyer-meta{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    font-size:12px;
+    color:rgba(238,241,255,.85);
+    margin-bottom:6px;
+  }
+  .flyer-meta strong{
+    display:block;
+    color:var(--gold);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin-bottom:3px;
+  }
+  .flyer-note{
+    font-size:12.5px;
+    color:rgba(238,241,255,.65);
+    margin-top:14px;
+    line-height:1.5;
+  }
+  .flyer-cta{
+    display:inline-block;
+    margin-top:16px;
+    padding:12px 26px;
+    border-radius:999px;
+    background: linear-gradient(135deg, var(--spider-red), var(--spider-red-dark));
+    color:var(--web-white);
+    text-decoration:none;
+    font-weight:700;
+    font-size:14px;
+    border:2px solid var(--gold);
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    transition: transform .15s ease;
+  }
+  .flyer-cta:hover{transform:translateY(-2px);}
+  .flyer-cta:active{transform:scale(.97);}
+  .flyer-web-corner{
+    position:absolute;
+    top:-14px;
+    right:-14px;
+    width:110px;
+    height:110px;
+    opacity:.5;
+    z-index:0;
+  }
+
+  /* ---------- Floating flowers & hearts ---------- */
+  .petals{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+    overflow:hidden;
+  }
+  .petal{
+    position:absolute;
+    top:-40px;
+    font-size:18px;
+    opacity:.8;
+    animation: floatDown linear infinite;
+  }
+  @keyframes floatDown{
+    0%{transform:translateY(0) translateX(0) rotate(0deg); opacity:0;}
+    10%{opacity:.85;}
+    90%{opacity:.85;}
+    100%{transform:translateY(110vh) translateX(24px) rotate(200deg); opacity:0;}
+  }
+
+/* ---------- LOVE SCENE ---------- */
+
+.love-scene{
+    display:none;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.love-scene.show{
+    display:flex;
+    animation:fadeUp .8s ease;
+}
+
+.love-photo{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #fff;
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+.lov1{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #fff;
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+.lov1 {
+   transform: scaleX(-1);
+}
+.heart-center{
+    font-size:80px;
+    animation:heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.25);}
+}
+.trailer{
+  width:100%;
+  margin-top:0;
+  border-radius:0 0 20px 20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+}
+
+.trailer iframe{
+  width:100%;
+  height:320px;
+  display:block;
+  border:none;
+}
+  @media (max-width:420px){
+    .details{grid-template-columns:1fr;}
+    .rsvp-zone{min-height:260px;}
+  }
+  .share-msg{
+  display:none;
+  text-align:center;
+  margin-top:25px;
+  padding:20px;
+  background:rgba(255,255,255,.08);
+  border-radius:20px;
+  color:var(--gold);
+  font-weight:700;
+}
+
+.share-msg.show{
+  display:block;
+  animation:fadeUp .6s ease;
+}
+
+.share-msg button{
+  border:none;
+  padding:12px 25px;
+  margin:8px;
+  border-radius:999px;
+  font-weight:700;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<canvas id="webCanvas"></canvas>
+<div class="petals" id="petals"></div>
+
+<div class="wrap">
+
+  <div class="spider-rig">
+    <div class="spider">🕷️</div>
+  </div>
+
+  <span class="burst b1">¡POW!</span>
+  <span class="burst b2">¡ZIP!</span>
+
+  <div class="hero">
+    <span class="badge">🌸 Para ti, Mar 💕</span>
+    <h1 class="title">¡ESTÁS INVITADA!</h1>
+    <div class="subtitle">Una invitación de Bradley 🕸️</div>
+    <div class="kid-name">Con mucho cariño, Bradley quiere compartir este día tan bonito contigo 🌷💕</div>
+  </div>
+
+  <div class="flyer">
+    <svg class="flyer-web-corner" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#eef1ff" stroke-width="1" fill="none">
+        <line x1="0" y1="30" x2="100" y2="30"/>
+        <line x1="0" y1="55" x2="100" y2="55"/>
+        <line x1="0" y1="80" x2="100" y2="80"/>
+        <line x1="20" y1="0" x2="20" y2="100"/>
+        <line x1="45" y1="0" x2="45" y2="100"/>
+        <line x1="70" y1="0" x2="70" y2="100"/>
+        <line x1="0" y1="0" x2="100" y2="100"/>
+        <line x1="100" y1="0" x2="0" y2="100"/>
+      </g>
+    </svg>
+    <div class="flyer-inner">
+      <div class="flyer-eyebrow">🎬 Estreno especial el mismo fin de semana</div>
+      <div class="flyer-title">Spider-Man:<br>Brand New Day</div>
+      <div class="flyer-sub">¡Llega a los cines justo cuando celebramos!</div>
+      <div class="flyer-webline"></div>
+      <div class="flyer-meta">
+        <div><strong>Estreno</strong>30 de julio, 2026</div>
+        <div><strong>Cine</strong>Cinemex</div>
+        <div><strong>Nosotros</strong>¡Ahí estaremos! 🕷️</div>
+      </div>
+      <p class="flyer-note">Con mucho cariño aprovechamos que el nuevo Spider-Man llega justo ese fin de semana, para hacer de nuestra celebración un momento todavía más bonito 🌸🕸️🍿</p>
+      <a class="flyer-cta" href="https://cinemex.com/pelicula/71965/spider-man-un-nuevo-dia" target="_blank" rel="noopener noreferrer">Ver horarios y boletos en Cinemex 🎟️</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="details">
+      <div class="detail">
+        <div class="label">Fecha</div>
+        <div class="value">30 de Julio<small>2026</small></div>
+      </div>
+      <div class="detail">
+        <div class="label">Hora</div>
+        <div class="value">Por confirmar<small>muy pronto</small></div>
+      </div>
+      <div class="detail full">
+        <div class="label">Lugar</div>
+        <div class="value">Cinemex 🎬</div>
+      </div>
+    </div>
+    <p class="message">
+      Querida Mar 🌸,<br><br>
+      Con el corazón lleno de ilusión 💕, quiero invitarte a compartir un día muy especial — lleno de risas, pastel, palomitas 🍿 y lindos recuerdos en el cine. Tu presencia haría este momento aún más bonito, así que espero poder contar contigo 🕸️✨<br><br>
+      Con cariño,<br>Bradley 💕
+    </p>
+  </div>
+
+  <div class="rsvp-title">¿Nos acompañas? 🌷💌</div>
+  <div class="rsvp-zone" id="rsvpZone">
+    <button class="btn btn-yes" id="yesBtn">¡Sí, con mucho cariño! 💕🎉</button>
+    <button class="btn btn-no" id="noBtn">No 😢</button>
+  </div>
+  <div class="confirm-msg" id="confirmMsg">¡Qué alegría! 🌸 Nos vemos muy pronto — ¡prepara tu disfraz con mucho cariño! 🕷️💕🎊</div>
+  <div class="share-msg" id="shareMsg">
+    💕 ¿Quieres compartir tu respuesta con Bradley?
+    <br><br>
+    <button id="shareYes">Sí 💚</button>
+    <button id="shareNo">Ahora no</button>
+  </div>
+  <div class="cinema-scene" id="cinemaScene">
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sala de cine con público disfrutando la función">
+      <defs>
+        <linearGradient id="screenGlow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3d63e0">
+            <animate attributeName="stop-color" values="#3d63e0;#e0202c;#ffc94d;#3d63e0" dur="6s" repeatCount="indefinite"/>
+          </stop>
+          <stop offset="100%" stop-color="#0b1020"/>
+        </linearGradient>
+        <radialGradient id="beam" cx="50%" cy="0%" r="90%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect x="0" y="0" width="640" height="300" fill="#05060d"/>
+
+      <!-- screen -->
+      <rect x="60" y="18" width="520" height="150" rx="8" fill="url(#screenGlow)"/>
+      <rect x="60" y="18" width="520" height="150" rx="8" fill="url(#beam)"/>
+      <rect x="52" y="12" width="536" height="10" rx="4" fill="#1a1f33"/>
+
+      <!-- little web icon corner of screen, playful nod to the theme -->
+      <g opacity="0.35" stroke="#eef1ff" stroke-width="1" fill="none">
+        <line x1="560" y1="30" x2="600" y2="30"/>
+        <line x1="580" y1="20" x2="580" y2="55"/>
+        <line x1="565" y1="22" x2="595" y2="50"/>
+        <line x1="595" y1="22" x2="565" y2="50"/>
+      </g>
+
+      <!-- audience silhouettes (rows) -->
+      <g fill="#05060d">
+        <!-- back row -->
+        <g transform="translate(0,190)">
+          <circle cx="90" cy="18" r="14"/><rect x="76" y="30" width="28" height="26" rx="10"/>
+          <circle cx="150" cy="18" r="14"/><rect x="136" y="30" width="28" height="26" rx="10"/>
+          <circle cx="210" cy="18" r="14"/><rect x="196" y="30" width="28" height="26" rx="10"/>
+          <circle cx="270" cy="18" r="14"/><rect x="256" y="30" width="28" height="26" rx="10"/>
+          <circle cx="330" cy="18" r="14"/><rect x="316" y="30" width="28" height="26" rx="10"/>
+          <circle cx="390" cy="18" r="14"/><rect x="376" y="30" width="28" height="26" rx="10"/>
+          <circle cx="450" cy="18" r="14"/><rect x="436" y="30" width="28" height="26" rx="10"/>
+          <circle cx="510" cy="18" r="14"/><rect x="496" y="30" width="28" height="26" rx="10"/>
+          <circle cx="560" cy="18" r="14"/><rect x="546" y="30" width="28" height="26" rx="10"/>
+        </g>
+        <!-- front row, bigger, with two arms up cheering -->
+        <g transform="translate(0,215)">
+          <circle cx="130" cy="34" r="18"/><rect x="112" y="50" width="36" height="34" rx="12"/>
+          <circle cx="200" cy="34" r="18"/><rect x="182" y="50" width="36" height="34" rx="12"/>
+          <!-- cheering kid with arms up -->
+          <g>
+            <circle cx="270" cy="30" r="19"/>
+            <rect x="251" y="47" width="38" height="32" rx="12"/>
+            <rect x="240" y="30" width="9" height="30" rx="4" transform="rotate(-25 244 45)"/>
+            <rect x="291" y="30" width="9" height="30" rx="4" transform="rotate(25 296 45)"/>
+          </g>
+          <circle cx="340" cy="34" r="18"/><rect x="322" y="50" width="36" height="34" rx="12"/>
+          <circle cx="410" cy="34" r="18"/><rect x="392" y="50" width="36" height="34" rx="12"/>
+          <circle cx="480" cy="34" r="18"/><rect x="462" y="50" width="36" height="34" rx="12"/>
+          <circle cx="550" cy="34" r="18"/><rect x="532" y="50" width="36" height="34" rx="12"/>
+        </g>
+      </g>
+
+      <!-- floating popcorn -->
+      <g fill="#ffc94d">
+        <circle cx="80" cy="90" r="3">
+          <animate attributeName="cy" values="90;260;90" dur="4.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.2;1" dur="4.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="520" cy="70" r="3">
+          <animate attributeName="cy" values="70;250;70" dur="5.2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.2;1" dur="5.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="300" cy="100" r="2.5">
+          <animate attributeName="cy" values="100;260;100" dur="3.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.2;1" dur="3.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="420" cy="90" r="2.5">
+          <animate attributeName="cy" values="90;255;90" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="1;0.2;1" dur="6s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </svg>
+      <div class="trailer">
+        <iframe 
+            src="https://www.youtube.com/embed/Pw1X-57Ms-8?autoplay=1&mute=1"
+            title="Spider-Man Trailer Español"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <div class="cinema-caption">🍿 Así se va a sentir la sala el 30 de julio... ¡nos vemos ahí!</div>
+  </div>
+  <div class="love-scene" id="loveScene">
+
+    <img src="images/me.jpeg" class="lov1" alt="Bradley">
+
+    <div class="heart-center">❤️</div>
+
+    <img src="images/you.jpeg" class="love-photo" alt="Jessica">
+
+</div>
+
+  <footer>🌸 Con todo nuestro cariño te esperamos... aunque el botón "No" no quiera dejarte 😉💕</footer>
+</div>
+
+<script>
+/* ---------------- Floating flowers & hearts ---------------- */
+const petalsContainer = document.getElementById('petals');
+const petalEmojis = ['🌸','💕','🌷','✨','💮'];
+function spawnPetal(){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.textContent = petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
+  p.style.left = Math.random()*100 + 'vw';
+  const duration = 9 + Math.random()*8;
+  p.style.animationDuration = duration + 's';
+  p.style.fontSize = (14 + Math.random()*12) + 'px';
+  petalsContainer.appendChild(p);
+  setTimeout(()=> p.remove(), duration*1000);
+}
+for(let i=0;i<6;i++){ setTimeout(spawnPetal, i*900); }
+setInterval(spawnPetal, 1400);
+
+/* ---------------- Spider-web canvas background ---------------- */
+const canvas = document.getElementById('webCanvas');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  drawWeb();
+}
+function drawWeb(){
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle = 'rgba(238,241,255,0.5)';
+  ctx.lineWidth = 1;
+  const cx = w*0.85, cy = h*0.02;
+  const rings = 6, spokes = 10, maxR = Math.max(w,h)*0.9;
+
+  const spokePts = [];
+  for(let s=0; s<spokes; s++){
+    const angle = (Math.PI/ (spokes-1)) * s + Math.PI;
+    const x2 = cx + Math.cos(angle)*maxR;
+    const y2 = cy + Math.abs(Math.sin(angle))*maxR;
+    spokePts.push({angle, x2, y2});
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+  }
+  for(let r=1; r<=rings; r++){
+    const frac = r/rings;
+    ctx.beginPath();
+    for(let s=0; s<spokePts.length; s++){
+      const p = spokePts[s];
+      const x = cx + (p.x2-cx)*frac;
+      const y = cy + (p.y2-cy)*frac;
+      if(s===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  }
+
+  const cx2 = w*0.05, cy2 = h*1.0;
+  const maxR2 = Math.max(w,h)*0.5;
+  const spokePts2 = [];
+  for(let s=0; s<7; s++){
+    const angle = (Math.PI/2/6)*s + Math.PI*1.5;
+    const x2 = cx2 + Math.cos(angle)*maxR2;
+    const y2 = cy2 + Math.sin(angle)*maxR2;
+    spokePts2.push({x2,y2});
+    ctx.beginPath();
+    ctx.moveTo(cx2,cy2);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+  }
+  for(let r=1; r<=4; r++){
+    const frac = r/4;
+    ctx.beginPath();
+    for(let s=0; s<spokePts2.length; s++){
+      const p = spokePts2[s];
+      const x = cx2 + (p.x2-cx2)*frac;
+      const y = cy2 + (p.y2-cy2)*frac;
+      if(s===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  }
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+/* ---------------- Dodging "No" button ---------------- */
+const noBtn = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const confirmMsg = document.getElementById('confirmMsg');
+const cinemaScene = document.getElementById('cinemaScene');
+const loveScene = document.getElementById('loveScene');
+const shareMsg = document.getElementById('shareMsg');
+const shareYes = document.getElementById('shareYes');
+const shareNo = document.getElementById('shareNo');
+let dodgeCount = 0;
+const dodgeMessages = [
+  "No 😢",
+  "¿Seguro? 🤔",
+  "¡Piénsalo de nuevo! 🕸️",
+  "¡Aquí no existe el 'No'!",
+  "¡Soy muy rápido para ti! ⚡",
+  "Inténtalo otra vez 😏",
+  "¡Mi sentido arácnido dice que vengas!",
+];
+
+function isTouchDevice(){
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
+function moveNoButtonRandomly(){
+  noBtn.classList.add('dodging');
+  const btnW = noBtn.offsetWidth;
+  const btnH = noBtn.offsetHeight;
+  const margin = 16;
+  const maxLeft = window.innerWidth - btnW - margin;
+  const maxTop = window.innerHeight - btnH - margin;
+  const newLeft = Math.max(margin, Math.random()*maxLeft);
+  const newTop = Math.max(margin, Math.random()*maxTop);
+  noBtn.style.left = newLeft + 'px';
+  noBtn.style.top = newTop + 'px';
+
+  dodgeCount++;
+  const msg = dodgeMessages[Math.min(dodgeCount, dodgeMessages.length-1)];
+  noBtn.textContent = msg;
+}
+
+document.addEventListener('mousemove', (e)=>{
+  if(isTouchDevice()) return;
+  const rect = noBtn.getBoundingClientRect();
+  const btnCenterX = rect.left + rect.width/2;
+  const btnCenterY = rect.top + rect.height/2;
+  const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+  if(dist < 90){
+    moveNoButtonRandomly();
+  }
+});
+
+noBtn.addEventListener('touchstart', (e)=>{
+  e.preventDefault();
+  moveNoButtonRandomly();
+}, {passive:false});
+
+noBtn.addEventListener('click', (e)=>{
+  if(isTouchDevice()){
+    e.preventDefault();
+    moveNoButtonRandomly();
+  }
+});
+
+noBtn.addEventListener('focus', ()=>{
+  if(!isTouchDevice()) moveNoButtonRandomly();
+});
+
+/* Yes button confirms and reveals the cinema scene */
+yesBtn.addEventListener('click', ()=>{
+
+  confirmMsg.classList.add('show');
+
+  yesBtn.textContent = "¡Gracias por confirmar! ✅";
+
+  yesBtn.disabled = true;
+
+  noBtn.style.display = 'none';
+
+  cinemaScene.classList.add('show');
+
+  setTimeout(()=>{
+      loveScene.classList.add('show');
+  },1500);
+  setTimeout(()=>{
+    shareMsg.classList.add('show');
+},5000);
+
+  cinemaScene.scrollIntoView({
+      behavior:'smooth',
+      block:'nearest'
+  });
+  setTimeout(()=>{
+  html2canvas(document.body).then(canvas=>{
+
+    const img = canvas.toDataURL("image/png");
+
+    const link = document.createElement("a");
+    link.download = "invitacion-bradley.png";
+    link.href = img;
+    link.click();
+
+    alert("💕 Mar, envíame la captura para guardarla como recuerdo ❤️");
+
+  });
+},2500);
+
+});
+  shareYes.addEventListener('click', ()=>{
+
+  const message = "Hola Bradley 💕 Acepto la invitación. Te envío la captura como recuerdo ❤️";
+
+  const phone = "529621082629";
+
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+
+});
+
+shareNo.addEventListener('click', ()=>{
+  shareMsg.innerHTML = "Está bien 💕 Gracias por responder 🌸";
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
