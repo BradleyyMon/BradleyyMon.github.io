@@ -405,6 +405,41 @@
     100%{transform:translateY(110vh) translateX(24px) rotate(200deg); opacity:0;}
   }
 
+/* ---------- LOVE SCENE ---------- */
+
+.love-scene{
+    display:none;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.love-scene.show{
+    display:flex;
+    animation:fadeUp .8s ease;
+}
+
+.love-photo{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #fff;
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+
+.heart-center{
+    font-size:80px;
+    animation:heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.25);}
+}
+
   @media (max-width:420px){
     .details{grid-template-columns:1fr;}
     .rsvp-zone{min-height:260px;}
@@ -573,6 +608,15 @@
     </svg>
     <div class="cinema-caption">🍿 Así se va a sentir la sala el 30 de julio... ¡nos vemos ahí!</div>
   </div>
+  <div class="love-scene" id="loveScene">
+
+    <img src="images/me.PNG" class="love-photo" alt="Bradley">
+
+    <div class="heart-center">❤️</div>
+
+    <img src="images/you.PNG" class="love-photo" alt="Jessica">
+
+</div>
 
   <footer>🌸 Con todo nuestro cariño te esperamos... aunque el botón "No" no quiera dejarte 😉💕</footer>
 </div>
@@ -667,7 +711,7 @@ const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
 const confirmMsg = document.getElementById('confirmMsg');
 const cinemaScene = document.getElementById('cinemaScene');
-
+const loveScene = document.getElementById('loveScene');
 let dodgeCount = 0;
 const dodgeMessages = [
   "No 😢",
@@ -729,12 +773,26 @@ noBtn.addEventListener('focus', ()=>{
 
 /* Yes button confirms and reveals the cinema scene */
 yesBtn.addEventListener('click', ()=>{
+
   confirmMsg.classList.add('show');
+
   yesBtn.textContent = "¡Gracias por confirmar! ✅";
+
   yesBtn.disabled = true;
+
   noBtn.style.display = 'none';
+
   cinemaScene.classList.add('show');
-  cinemaScene.scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  setTimeout(()=>{
+      loveScene.classList.add('show');
+  },1500);
+
+  cinemaScene.scrollIntoView({
+      behavior:'smooth',
+      block:'nearest'
+  });
+
 });
 </script>
 </body>
