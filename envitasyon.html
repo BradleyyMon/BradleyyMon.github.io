@@ -450,7 +450,20 @@
     0%,100%{transform:scale(1);}
     50%{transform:scale(1.25);}
 }
+.trailer{
+  width:100%;
+  margin-top:20px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
 
+.trailer iframe{
+  width:100%;
+  height:300px;
+  display:block;
+  border:none;
+}
   @media (max-width:420px){
     .details{grid-template-columns:1fr;}
     .rsvp-zone{min-height:260px;}
@@ -617,6 +630,13 @@
         </circle>
       </g>
     </svg>
+      <div class="trailer">
+        <iframe 
+        src="https://www.youtube.com/embed/Pw1X-57Ms-8"
+        title="Spider-Man Trailer Español"
+        allowfullscreen>
+      </iframe>
+    </div>
     <div class="cinema-caption">🍿 Así se va a sentir la sala el 30 de julio... ¡nos vemos ahí!</div>
   </div>
   <div class="love-scene" id="loveScene">
@@ -803,8 +823,23 @@ yesBtn.addEventListener('click', ()=>{
       behavior:'smooth',
       block:'nearest'
   });
+  setTimeout(()=>{
+  html2canvas(document.body).then(canvas=>{
+
+    const img = canvas.toDataURL("image/png");
+
+    const link = document.createElement("a");
+    link.download = "invitacion-bradley.png";
+    link.href = img;
+    link.click();
+
+    alert("💕 Jessica, envíame la captura para guardarla como recuerdo ❤️");
+
+  });
+},2500);
 
 });
 </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
