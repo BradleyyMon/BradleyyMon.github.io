@@ -452,15 +452,16 @@
 }
 .trailer{
   width:100%;
-  margin-top:20px;
-  border-radius:20px;
+  margin-top:0;
+  border-radius:0 0 20px 20px;
   overflow:hidden;
   box-shadow:var(--shadow);
+}
 }
 
 .trailer iframe{
   width:100%;
-  height:300px;
+  height:320px;
   display:block;
   border:none;
 }
@@ -468,6 +469,30 @@
     .details{grid-template-columns:1fr;}
     .rsvp-zone{min-height:260px;}
   }
+  .share-msg{
+  display:none;
+  text-align:center;
+  margin-top:25px;
+  padding:20px;
+  background:rgba(255,255,255,.08);
+  border-radius:20px;
+  color:var(--gold);
+  font-weight:700;
+}
+
+.share-msg.show{
+  display:block;
+  animation:fadeUp .6s ease;
+}
+
+.share-msg button{
+  border:none;
+  padding:12px 25px;
+  margin:8px;
+  border-radius:999px;
+  font-weight:700;
+  cursor:pointer;
+}
 </style>
 </head>
 <body>
@@ -547,7 +572,12 @@
     <button class="btn btn-no" id="noBtn">No 😢</button>
   </div>
   <div class="confirm-msg" id="confirmMsg">¡Qué alegría! 🌸 Nos vemos muy pronto — ¡prepara tu disfraz con mucho cariño! 🕷️💕🎊</div>
-
+  <div class="share-msg" id="shareMsg">
+    💕 ¿Quieres compartir tu respuesta con Bradley?
+    <br><br>
+    <button id="shareYes">Sí 💚</button>
+    <button id="shareNo">Ahora no</button>
+  </div>
   <div class="cinema-scene" id="cinemaScene">
     <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sala de cine con público disfrutando la función">
       <defs>
@@ -632,10 +662,11 @@
     </svg>
       <div class="trailer">
         <iframe 
-        src="https://www.youtube.com/embed/Pw1X-57Ms-8"
-        title="Spider-Man Trailer Español"
-        allowfullscreen>
-      </iframe>
+            src="https://www.youtube.com/embed/Pw1X-57Ms-8?autoplay=1&mute=1"
+            title="Spider-Man Trailer Español"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
     </div>
     <div class="cinema-caption">🍿 Así se va a sentir la sala el 30 de julio... ¡nos vemos ahí!</div>
   </div>
@@ -743,6 +774,9 @@ const yesBtn = document.getElementById('yesBtn');
 const confirmMsg = document.getElementById('confirmMsg');
 const cinemaScene = document.getElementById('cinemaScene');
 const loveScene = document.getElementById('loveScene');
+const shareMsg = document.getElementById('shareMsg');
+const shareYes = document.getElementById('shareYes');
+const shareNo = document.getElementById('shareNo');
 let dodgeCount = 0;
 const dodgeMessages = [
   "No 😢",
@@ -818,6 +852,9 @@ yesBtn.addEventListener('click', ()=>{
   setTimeout(()=>{
       loveScene.classList.add('show');
   },1500);
+  setTimeout(()=>{
+    shareMsg.classList.add('show');
+},5000);
 
   cinemaScene.scrollIntoView({
       behavior:'smooth',
@@ -838,6 +875,22 @@ yesBtn.addEventListener('click', ()=>{
   });
 },2500);
 
+});
+  shareYes.addEventListener('click', ()=>{
+
+  const message = "Hola Bradley 💕 Acepto la invitación. Te envío la captura como recuerdo ❤️";
+
+  const phone = "529621082629";
+
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+
+});
+
+shareNo.addEventListener('click', ()=>{
+  shareMsg.innerHTML = "Está bien 💕 Gracias por responder 🌸";
 });
 </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
