@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio Privé</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#0b0b0b;
+    color:white;
+    min-height:100vh;
+}
+
+header{
+    text-align:center;
+    padding:40px 20px;
+}
+
+header h1{
+    color:#d4af37;
+    font-size:40px;
+}
+
+header p{
+    color:#aaa;
+    margin-top:10px;
+}
+
+
+/* Portfolio */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+
+.project{
+    background:#151515;
+    border:1px solid #333;
+    padding:30px 20px;
+    border-radius:15px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:#d4af37;
+    box-shadow:0 0 20px #d4af37;
+}
+
+
+.project h2{
+    color:#d4af37;
+    font-size:22px;
+}
+
+
+.project span{
+    display:block;
+    margin-top:15px;
+    color:#aaa;
+}
+
+
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#777;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>My Private Portfolio</h1>
+<p>Klike sou yon pwojè pou ouvri li</p>
+
+</header>
+
+
+
+<div class="container" id="portfolio"></div>
+
+
+
+<footer>
+© 2026 - Portfolio Privé
+</footer>
+
+
+
+<script>
+
+
+const projets = [
+
+"lienProjet1",
+"lienProjet2",
+"lienProjet3",
+"lienProjet4",
+"lienProjet5",
+"lienProjet6",
+"lienProjet7",
+"lienProjet8",
+"lienProjet9",
+"lienProjet10",
+
+"lienProjet11",
+"lienProjet12",
+"lienProjet13",
+"lienProjet14",
+"lienProjet15",
+"lienProjet16",
+"lienProjet17",
+"lienProjet18",
+"lienProjet19",
+"lienProjet20",
+
+"lienProjet21",
+"lienProjet22",
+"lienProjet23",
+"lienProjet24",
+"lienProjet25",
+"lienProjet26",
+"lienProjet27",
+"lienProjet28",
+"lienProjet29",
+"lienProjet30",
+
+"lienProjet31",
+"lienProjet32",
+"lienProjet33",
+"lienProjet34",
+"lienProjet35",
+"lienProjet36",
+"lienProjet37",
+"lienProjet38",
+"lienProjet39",
+"lienProjet40",
+
+"lienProjet41",
+"lienProjet42",
+"lienProjet43",
+"lienProjet44",
+"lienProjet45",
+"lienProjet46",
+"lienProjet47",
+"lienProjet48",
+"lienProjet49",
+"lienProjet50"
+
+];
+
+
+
+const container = document.getElementById("portfolio");
+
+
+
+projets.forEach((lien,index)=>{
+
+
+let numero = index + 1;
+
+
+let card = document.createElement("div");
+
+card.className="project";
+
+
+card.innerHTML=`
+
+<h2>Projet ${numero}</h2>
+
+<span>Clique pou vizite</span>
+
+`;
+
+
+
+card.onclick=()=>{
+
+if(lien !== ""){
+window.open(lien,"_blank");
+}
+
+else{
+
+alert("Mete lyen Projet "+numero);
+
+}
+
+};
+
+
+
+container.appendChild(card);
+
+
+
+});
+
+
+
+</script>
+
+
+</body>
+</html>
